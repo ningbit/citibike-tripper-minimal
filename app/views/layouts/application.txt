@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CitibikeTripperMinimal</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <p class="notice"><%= notice if !notice.nil? %></p>
+  <p class="alert"><%= alert if !alert.nil? %></p>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h1>Your closest station!<h1>
+
+<h2><%= @station.name %></h2>
+<h3>Available Bikes: <%= @station.availableBikes %> </h3>
+<h3>Available Docks: <%= @station.availableDocks%> </h3>
+
+<img src="http://api.tiles.mapbox.com/v3/examples.map-4l7djmvo/pin-l-pitch+ff3300(<%=@session.start_lng%>,<%=@session.start_lat%>),pin-l-1+0071cb(<%=@station.longitude%>,<%=@station.latitude%>)/<%=@session.start_lng%>,<%=@session.start_lat%>,16/640x440.png">
+</br>
+<%= link_to 'Start Over', root_path %>
