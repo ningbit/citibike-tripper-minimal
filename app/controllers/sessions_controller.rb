@@ -21,7 +21,8 @@ class SessionsController < ApplicationController
     Station.refresh
     @station = Station.find_by_station_id(params[:station_id].to_i)
     if @station.nil?
-      redirect_to new_session_path, alert: "Enter valid location!"
+      alert_error = (params[:station_id] == "TOOFAR" ? "Location too far!" : "Enter a valid location!")
+      redirect_to new_session_path, alert: alert_error
       return
     end
 
