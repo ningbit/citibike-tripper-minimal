@@ -13,13 +13,17 @@ class SessionsController < ApplicationController
   # GET /sessions/1
   # GET /sessions/1.json
   def show
-
     @session = Session.new
     @session.start_lat = params[:lat].to_f
     @session.start_lng = params[:lng].to_f
     @session.start_station_id = params[:station_id].to_i
+    @search_name = params[:search_name]
     Station.refresh
     @station = Station.find_by_station_id(params[:station_id].to_i)
+    if @station.nil?
+      redirect_to new_session_path, alert: "Enter valid location!"
+      return
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,8 +34,6 @@ class SessionsController < ApplicationController
   # GET /sessions/new
   # GET /sessions/new.json
   def new
-    # @session = Session.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @session }

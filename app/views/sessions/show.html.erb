@@ -1,9 +1,48 @@
-<h1>Your closest station!<h1>
+<html>
+<head>
+  <title>Citibike Directions</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
 
-<h2><%= @station.name %></h2>
-<h3>Available Bikes: <%= @station.availableBikes %> </h3>
-<h3>Available Docks: <%= @station.availableDocks%> </h3>
+<body class="show">
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $("body").css("display", "none");
+    });
+  </script>
 
-<img src="http://api.tiles.mapbox.com/v3/examples.map-4l7djmvo/pin-l-pitch+ff3300(<%=@session.start_lng%>,<%=@session.start_lat%>),pin-l-1+0071cb(<%=@station.longitude%>,<%=@station.latitude%>)/<%=@session.start_lng%>,<%=@session.start_lat%>,16/640x440.png">
-</br>
-<%= link_to 'Start Over', root_path %>
+<div class="container-fluid show">
+  <h1>Your closest station!</h1>
+  <div class="container-fluid">
+    <div class="span 8">
+      <h3><%=@search_name %></h3>
+      <img src="http://api.tiles.mapbox.com/v3/examples.map-4l7djmvo/pin-l-pitch+ff3300(<%=@session.start_lng%>,<%=@session.start_lat%>),pin-l-1+0071cb(<%=@station.longitude%>,<%=@station.latitude%>)/<%=@session.start_lng%>,<%=@session.start_lat%>,16/640x440.png" style="border:1px solid #;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;">
+    </div>
+
+    <div class="span 4">
+      <br />
+      <br />
+      <br />
+      <h3><%= @station.name %></h3>
+      <h4>Available Bikes: <%= @station.availableBikes %> </h4>
+      <h4>Available Docks: <%= @station.availableDocks%> </h4>
+      </br>
+      <button class="btn btn-large"><a href="<%=root_path%>">Start Over</a></button>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+            $("body").css("display", "none");
+            $("body").fadeIn(600);
+    });
+  </script>
+
+</div>
+</body>
+</html>

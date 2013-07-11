@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-  <div class="container">
+<body class="welcome">
+  <div class="container-fluid">
     <div class="row">
       <div class="span12">
         <h1>Welcome to Bike Trippr!</h1>
@@ -17,19 +16,14 @@
     </div>
 
 
-
-    <div class="row">
-      <div class="span5" id="results">
+    <div class="container-fluid">
+      <h2><%= alert if alert %></h2>
+      <div class="span5 well" id="results">
         <h2>Please enter your current location: </h2>
-        <form class="form-horizontal" action="/nearest_station" method="POST">
+        <form class="form" action="/nearest_station" method="POST">
           <div class="control-group">
             <div class="controls">
-              <input type="text" id="id_start" placeholder="Starting address" class="addr-input">
-            </div>
-          </div>
-
-           <div class="control-group">
-            <div class="controls">
+              <input type="text" id="id_start" placeholder="Location" class="addr-input" name="search_name"> <br />
               <input type="hidden" id="my_lng" name="lng" value=""></input>
               <input type="hidden" id="my_lat" name="lat" value=""></input>
               <input type="hidden" id="my_station_id" name="station_id" value=""></input>
