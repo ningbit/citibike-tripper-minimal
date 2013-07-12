@@ -1,0 +1,43 @@
+<% ingredient_array = %w{milk butter flour sugar eggs cream beef pork chicken onions soy-sauce tuna salmon avocado lime serrano-chiles pepper salt apple balsamic-vinegar lemon ramen rice breadcrumbs tomatoes potatoes cereal carrots celery broccoli spinach ginger garlic bokchoy honey hot-sauce grapes grape-jam ice-cream }.to_a.sort! %>
+
+<!DOCTYPE html5>
+<html>
+<head>
+  <title>Citibike Directions</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div class="container-fluid">
+<form>
+	<div class="span12">
+	
+	<!-- <textarea rows="3" cols="20" placeholder="Ingredients">
+	</textarea> -->
+	<h1>Create a Recipe</h1>
+	<input style="padding: 10px; width:480px; margin-bottom:15px; margin-left:20px; font-size: 26px;" placeholder="Name"/>
+
+	</div>
+	<div class="container-fluid">
+		<div class="span5">
+			<h3>Ingredients:</h3>
+			<h4 id="list"></h4>
+		</div>
+		<div class="span5">
+			<h3>Pantry: (Click to add)</h3>
+			<div class="well">
+				<% ingredient_array.each do |i| %>
+					<p class="btn" style="margin-bottom:2px" id="ingredient-<%=i%>"><%=i%></p>	
+				<%end%>
+			</div>
+			<span class='btn pull-right' style="margin-top:-10px; font-weight: 460" id='reset_ingredients'>Reset</span>
+		</div>
+	</div>
+</form>
+</div>
+	  <%= render :partial => 'jscript', :formats=>[:js], :locals => {:ingredient_array => ingredient_array}%>
+
+</body>
+</html>

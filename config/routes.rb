@@ -8,6 +8,8 @@ CitibikeTripperMinimal::Application.routes.draw do
 
   post 'nearest_station', :to => 'sessions#show'
 
+  get 'pantry', :to => 'sessions#pantry'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

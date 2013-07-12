@@ -102,7 +102,7 @@
       markersArray = [];
     }
 
-    $('#btn-get-directions').click(function(){
+    $('#btn-get-directions').submit(function(){
       var start = autocomplete_start.getPlace();
       var start_lat = start.geometry.location.lat();
       var start_lng = start.geometry.location.lng();
